@@ -2,30 +2,37 @@ def login():
     username = input("usermameInput :")
     password = input("passwordInput :")
     if username == "vinicitas" and password == "asdf":
-        return True
-    else :
-        return False
+        print("Success!")
+        return showMenu()
+    else:
+        print("Fail!")
+        return login()
+
+
 def showMenu():
     print("Welcome Vinicitas !!")
     print("1. vatCalculate")
     print("2. priceCalculate")
+    return menuSelect()
+
+
 def menuSelect():
     userselected = int(input(">>"))
-    return userselected
-def vatCalculate(totalprice):
+    if userselected == 1:
+        return vatCalculate()
+    elif userselected == 2:
+        return priceCalculate()
+
+
+def vatCalculate():
+    totalprice = int(input("total price :"))
     vat = 7
-    result = totalprice + (totalprice*vat/100)
+    result = totalprice + (totalprice * vat / 100)
     return result
+
+
 def priceCalculate():
     price1 = int(input("First Product Price : "))
     price2 = int(input("Second Product Price : "))
-    return vatCalculate(price1 + price2)
-
-login()
-showMenu()
-menuSelect()
-    if menuSelect() == 1:
-        print(priceCalculate())
-    elif menuSelect() == 2:
-        price1 = int(input("First Product Price : "))
-        print(price1+price2)
+    return price2+price1
+print("ราคารวม",login(),"บาท")
